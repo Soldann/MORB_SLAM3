@@ -47,7 +47,5 @@ cd ..
 
 # morbslam
 sudo apt install -y libboost-all-dev libssl-dev
-git clone git@github.com:Soldann/MORB_SLAM.git
-cd MORB_SLAM
 chmod +x build.sh
 ./build.sh -j$(nproc)

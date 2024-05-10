@@ -19,6 +19,19 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} MORB_SLAM::MORB_SLAM)
 
 ![MORBSLAM](images/Morbslam.jpg)
 
+## Docker installation
+
+A Docker image is provided to assist in testing of MORB_SLAM. This image should be used for testing purposes only.
+
+```
+docker pull ghcr.io/soldann/morb_slam:latest
+```
+
+To access usb devices like Realsense cameras from the docker container, you need to run in priviledged mode, ie:
+```
+docker run --privileged morb_slam bash
+```
+
 ----------------------------------
 
 ### V1.0, December 22th, 2021
