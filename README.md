@@ -2,7 +2,24 @@
 
 > This fork of [ORB_SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3) converts it into a CMake package that can be imported into other projects. It is continued from the original now deprecated/abandoned fork [MORB_SLAM](https://github.com/Soldann/MORB_SLAM).
 
-Install the library dependencies:
+
+### Build with vcpkg to gather dependencies
+```bash
+git clone https://github.com/DavidPetkovsek/MORB_SLAM
+cd MORB_SLAM
+./build.sh "-DCMAKE_TOOLCHAIN_FILE=${path_to_vcpkg_dir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+```
+> Note 1: You can use control the number of build workers with `-j` just like with normal builds
+> Note 2: After using the toolchain flag for the first time, it will cache the path and use the toolchain each time, that means you only need to use the extra long command for the first build! Even after cleaning with `clean.sh`!
+
+### Use the library in your cmake project
+```cmake
+find_package(MORB_SLAM REQUIRED COMPONENTS MORB_SLAM DBoW2 g2o sophus)
+add_executable(myprogram ${MY_CPP_FILES})
+target_link_libraries(myprogram MORB_SLAM::MORB_SLAM)
+```
+
+### Install the library dependencies  and build the old fashion way:
 ```bash
 ./dependencies.sh
 ```
@@ -12,12 +29,6 @@ Build and install MORB_SLAM:
 ./build.sh
 ```
 
-In your other projects, import using:
-```cmake
-find_package(MORB_SLAM REQUIRED COMPONENTS MORB_SLAM DBoW2 g2o sophus)
-add_executable(myprogram ${MY_CPP_FILES})
-target_link_libraries(myprogram MORB_SLAM::MORB_SLAM)
-```
 
 ![MORBSLAM](images/Morbslam.jpg)
 
