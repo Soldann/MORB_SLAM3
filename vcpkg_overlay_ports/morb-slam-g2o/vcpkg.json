@@ -1,0 +1,11 @@
+{
+    "name": "morb-slam-g2o",
+    "version-date": "2020-12-23",
+    "supports": "(linux | windows) & (x64 | arm64)",
+    "description":"g2o: A General Framework for Graph Optimization",
+    "homepage":"https://github.com/DavidPetkovsek/MORB_SLAM/tree/master/Thirdparty/g2o",
+    "dependencies": [
+        "opencv4",
+        "eigen3"
+    ]
+}

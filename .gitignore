@@ -11,6 +11,9 @@
 
 bin/*
 
+vcpkgLoc.txt
+./venv/
+
 ssh_key
 ssh_key.pub
 

@@ -12,6 +12,31 @@ if(CLANGXX_17_FOUND)
     set(CMAKE_CXX_COMPILER "clang++-17")
 endif()
 
+# If we have used vcpkg in the past, use it again
+if(EXISTS "${CMAKE_SOURCE_DIR}/vcpkgLoc.txt" AND NOT CMAKE_TOOLCHAIN_FILE)
+    file(READ "${CMAKE_SOURCE_DIR}/vcpkgLoc.txt" CMAKE_TOOLCHAIN_FILE)
+endif()
+
+if( CMAKE_TOOLCHAIN_FILE )
+    # If we want to use vcpkg
+    if(EXISTS "${CMAKE_TOOLCHAIN_FILE}")
+        file(WRITE "${CMAKE_SOURCE_DIR}/vcpkgLoc.txt" ${CMAKE_TOOLCHAIN_FILE})
+        message(STATUS "Using vcpkg toolchain")
+        set(Boost_NO_SYSTEM_PATHS ON)
+        set(Boost_NO_WARN_NEW_VERSIONS ON)
+        set(VCPKG_MANIFEST_FEATURES "examples")
+
+        # set(Python_ROOT_DIR "${CMAKE_SOURCE_DIR}/venv")
+        # set(PYTHON_EXECUTABLE "${CMAKE_SOURCE_DIR}/venv/bin/python3")
+        # set(Python_FIND_VIRTUALENV ONLY)
+        # find_package(Python COMPONENTS Interpreter Development)
+    else()
+        message(FATAL_ERROR "The cmake toolchain file specified does not exist: ${CMAKE_TOOLCHAIN_FILE}")
+    endif()
+else()
+    message(STATUS "No vcpkg toolchain file specified")
+endif()
+
 project(MORB_SLAM 
     VERSION ${MORB_VERSION}
     DESCRIPTION "A library for visual simultanious localization and mapping (vSLAM) for autonomous vehicles"

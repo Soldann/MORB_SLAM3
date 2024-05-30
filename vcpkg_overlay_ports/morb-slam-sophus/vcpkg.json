@@ -1,0 +1,10 @@
+{
+    "name": "morb-slam-sophus",
+    "version-semver": "1.1.0",
+    "supports": "(linux | windows) & (x64 | arm64)",
+    "description":"C++ implementation of Lie Groups using Eigen.",
+    "homepage":"https://github.com/DavidPetkovsek/MORB_SLAM/tree/master/Thirdparty/Sophus",
+    "dependencies": [
+        "eigen3"
+    ]
+}

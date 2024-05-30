@@ -1,0 +1,12 @@
+{
+    "name": "morb-slam-dbow2",
+    "version-semver": "1.0.0",
+    "supports": "(linux | windows) & (x64 | arm64)",
+    "description":"Enhanced hierarchical bag-of-word library for C++",
+    "homepage":"https://github.com/DavidPetkovsek/MORB_SLAM/tree/master/Thirdparty/DBoW2",
+    "dependencies": [
+        "opencv4",
+        "boost-serialization",
+        "boost-regex"
+    ]
+}

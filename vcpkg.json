@@ -1,0 +1,28 @@
+{
+    "name": "morb-slam",
+    "version-semver": "0.0.1",
+    "supports": "(linux | windows) & (x64 | arm64)",
+    "description":"MORB-SLAM: An Accurate Open-Source Library for Visual-Inertial and Multi-Map SLAM",
+    "homepage":"https://github.com/DavidPetkovsek/MORB_SLAM",
+    "license": "GPL-3.0",
+    "dependencies": [
+        "opencv4",
+        "pangolin",
+        "ixwebsocket",
+        "boost-serialization",
+        "boost-regex",
+        "openssl",
+        "eigen3",
+        "morb-slam-dbow2",
+        "morb-slam-g2o",
+        "morb-slam-sophus"
+    ],
+    "features": {
+      "examples": {
+        "description": "Make example executables",
+        "dependencies": [
+          "realsense2"
+        ]
+      }
+    }
+}
