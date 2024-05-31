@@ -79,6 +79,8 @@ for arg in "$@"; do
     j_arg="$arg"
   elif [[ $arg =~ ^-G[0-9a-zA-Z]+$ ]]; then
     g_arg="$arg"
+  elif [[ $arg =~ ^-DCMAKE_TOOLCHAIN_FILE ]]; then
+    vcpkg_arg="found"
   else
     cmake_args+=("$arg")
   fi
@@ -123,7 +125,11 @@ if [ ! -d "build" ] || [ ! -f "build/${configCompleteFile}" ]; then
         echo "Workers: ${j_arg}    Generator: ${g_arg}"
         if test -n "$vcpkg_arg"; then
           echo "With VCPKG"
-          vcpkg_arg="-DCMAKE_TOOLCHAIN_FILE=${vcpkg_arg}"
+          if [[ "$vcpkg_arg" != "found" ]]; then
+            vcpkg_arg="-DCMAKE_TOOLCHAIN_FILE=${vcpkg_arg}"
+          else
+            vcpkg_arg=""
+          fi
           do_vcpkg_prereqs
         fi
         echo "User Flags: ${cmake_args[@]}"
